@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz en Ligne</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Le wrapper contient tout le contenu et sera scalé -->
+  <div id="wrapper">
+    <div id="quiz-container">
+      <!-- Conteneur pour le logo centré et cliquable -->
+      <div id="logo-container">
+        <a href="index.html">
+          <img src="logo.png" alt="Logo" id="logo">
+        </a>
+      </div>
+      
+      <!-- Conteneur pour les règles du quiz -->
+      <div id="quiz-rules">
+        <p>
+          Règles du Quiz : Vous avez 2 minutes par question.<br>
+          Cliquez sur l'option qui vous semble juste.<br>
+          Bonne chance !
+        </p>
+      </div>
+      
+      <!-- Bouton Ready pour activer les sons et démarrer le quiz -->
+      <div id="ready-btn-container">
+        <button id="ready-btn" class="submit-btn">Ready</button>
+      </div>
+      
+      <!-- Zone du timer -->
+      <div id="timer"></div>
+      
+      <!-- Contenu du quiz -->
+      <div id="quiz-content">
+        <!-- Le contenu du quiz sera injecté ici par script.js -->
+      </div>
+      
+      <!-- Bouton "Valider la réponse" masqué au démarrage -->
+      <button id="submit-btn" class="submit-btn" style="display: none;">Valider la réponse</button>
+      
+      <div id="resultat"></div>
+    </div>
+  </div>
+
+  <!-- Sons pour les réponses -->
+  <audio id="audio-correct" src="./assets/audio/good_answer.mp3"></audio>
+  <audio id="audio-incorrect" src="./assets/audio/wrong_answer.mp3"></audio>
+  <audio id="audio-timer" src="./assets/audio/timer.mp3"></audio>  
+
+  <!-- Inclusion du script du quiz -->
+  <script src="script.js"></script>
+  <script>
+    // Fonction pour scaler le wrapper afin que tout tienne dans la fenêtre
+    function scaleContent() {
+      const wrapper = document.getElementById("wrapper");
+      const scale = Math.min(
+        window.innerWidth / wrapper.offsetWidth,
+        window.innerHeight / wrapper.offsetHeight
+      );
+      wrapper.style.transformOrigin = "top left";
+      wrapper.style.transform = "scale(" + scale + ")";
+    }
+    window.addEventListener("resize", scaleContent);
+    window.addEventListener("load", scaleContent);
+  </script>
+</body>
+</html>

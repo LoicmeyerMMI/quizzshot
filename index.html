@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue sur le Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Le wrapper contient tout le contenu et sera scalé -->
+  <div id="wrapper">
+    <header>
+      <a href="index.html">
+        <img src="logo.png" alt="Logo" id="logo">
+      </a>
+    </header>
+    <div id="landing-container">
+      <h1>Bienvenue sur le Quiz en Ligne</h1>
+      <p>
+        Ce quiz teste vos connaissances sur divers sujets. Vous répondrez à plusieurs questions à choix multiples.
+        Chaque bonne réponse vous rapporte un point. À la fin du quiz, découvrez votre score et comparez-le avec vos amis !
+      </p>
+      <button id="start-btn" class="submit-btn">Commencer le quiz</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('start-btn').addEventListener('click', () => {
+      window.location.href = 'quiz.html';
+    });
+  </script>
+  <script>
+    // Fonction pour scaler le wrapper afin que tout tienne dans la fenêtre
+    function scaleContent() {
+      const wrapper = document.getElementById("wrapper");
+      const scale = Math.min(
+        window.innerWidth / wrapper.offsetWidth,
+        window.innerHeight / wrapper.offsetHeight
+      );
+      wrapper.style.transformOrigin = "top left";
+      wrapper.style.transform = "scale(" + scale + ")";
+    }
+    window.addEventListener("resize", scaleContent);
+    window.addEventListener("load", scaleContent);
+  </script>
+</body>
+</html>
